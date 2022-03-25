@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1
-FROM ubuntu:20.04
+ARG ubuntu_release
+FROM ubuntu:$ubuntu_release
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
