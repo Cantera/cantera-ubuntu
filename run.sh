@@ -1,8 +1,22 @@
 #/bin/bash
+
+# Usage: to launch an environment for Ubuntu 22.04 pacakges, run:
+#
+#     ./run.sh 22.04
+
+die () {
+    echo >&2 "$@"
+    exit 1
+}
+
+[ "$#" -eq 1 ] || die "Missing required argument for Ubuntu release, e.g. '22.04'"
+
+. ./vars.sh
+
 docker run -it \
-       --mount type=bind,source=~/src/cantera,target=/src/cantera,readonly \
-       --mount type=bind,source=~/.gnupg,target=/root/gnupg-remote,readonly \
-       -e "CTVER=2.6.0b1" \
-       -e "CTBRANCH=ubuntu20.04-ct2.6" \
-       -e "PPA_TARGET=cantera-team/cantera-unstable" \
-       ${USER}/ctppa:ubuntu20.04
+       --mount type=bind,source=$HOME/src/cantera,target=/src/cantera,readonly \
+       --mount type=bind,source=$HOME/.gnupg,target=/root/gnupg-remote,readonly \
+       -e "CTVER=$CTVER" \
+       -e "CTBRANCH=ubuntu${1}-ct${CTBRANCH}" \
+       -e "PPA_TARGET=${PPA_TARGET}" \
+       ${USER}/ctppa:ubuntu${1}
