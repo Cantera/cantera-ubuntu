@@ -18,7 +18,7 @@ Cantera packages for the Ubuntu PPA.
 ### General ideas
 
 - Keep a branch for each Ubuntu series and Cantera version that we currently support,
-  e.g. `ubuntu20.04-ct25`. This branch contains the contents of the `debian`
+  e.g. `ubuntu20.04-ct2.6`. This branch contains the contents of the `debian`
   subdirectory, where all of the package-specific files live.
 - For each new Ubuntu series, create new branches from the preceding series.
 - For each new Cantera release, create new branches from the tagged commits for the
@@ -34,9 +34,9 @@ Cantera packages for the Ubuntu PPA.
 *Using Cantera 2.6.0 release as an example*
 
 - Check out the branch for the most recent Ubuntu release supported by the previous
-  Cantera release, e.g. `git checkout ubuntu20.04-ct25`
+  Cantera release, e.g. `git checkout ubuntu20.04-ct2.6`
 - Create a new branch for the new Cantera version, e.g.
-  `git checkout -b ubuntu20.04-ct26`.
+  `git checkout -b ubuntu20.04-ct2.6`.
 - Merge the release commit, e.g. `git merge v2.6.0`
 - Add a new entry to `debian/changelog`
   - `dch -i` can be used to automatically generate a template for the Changelog message
