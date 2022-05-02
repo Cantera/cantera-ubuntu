@@ -49,6 +49,9 @@ Cantera packages for the Ubuntu PPA.
     - `focal0` names the series, with a suffix that is incremented for each build for
       that series. This number must be incremented each time the package is uploaded to
       Launchpad, even if the build fails.
+    - For alpha/beta releases, the a `~` needs to be inserted before the alpha/beta suffix
+      so they will be seen as coming before the stable release, for example
+      `2.5.0~b2-1+focal0`.
   - Add a message, e.g. `New upstream release`
   - If you create the Changelog entry manually, running `date --rfc-2822` will give you
     a correctly formatted date string.
