@@ -67,10 +67,19 @@ Cantera packages for the Ubuntu PPA.
 
 ### Deal with any patches needed
 
-To be determined. I think that if we need patches in the future, we will want to start
-using git-build-package (https://wiki.debian.org/PackagingWithGit) to manage the
-patches. Using quilt requires some really annoying mental gymnastics, especially if you
-ever make any mistakes in preparing a patch.
+- Install `sudo apt install git-buildpackage`
+- Create `.git/gbp.conf` with contents that look like the following:
+  ```ini
+  [DEFAULT]
+  upstream-branch = main
+  upstream-tag = v%(version)s
+  debian-branch = ubuntu20.04-ct2.6
+  ```
+- Run `gbp pq import` to convert the existing patches into a new branch
+- Make any changes desired and commit them to this branch. This can include cherry-picking
+  commits onto this branch.
+- Run `gbp pq export`. This will create the patch files and return you to the `debian-branch`
+- Run `git add debian/patches` and `git commit`.
 
 ## Create Docker images for each supported Ubuntu version
 
