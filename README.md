@@ -63,7 +63,7 @@ Cantera packages for the Ubuntu PPA.
 ### Steps for adding a new Ubuntu version
 
 - Update the list of Ubuntu versions in `build_images.sh`
-- Process for updating branches TBD.
+- Create a new entry in `debian/changelog` following the above guidelines
 
 ### Deal with any patches needed
 
@@ -91,7 +91,7 @@ Cantera packages for the Ubuntu PPA.
   `PPA_TARGET`.
   - For stable releases, `PPA_TARGET=cantera-team/Cantera`
   - For alpha/beta releases, `PPA_TARGET=cantera-team/cantera-unstable`
-- Launch a Docker container for an Ubuntu version, e.g. `./run 21.10`
+- Launch a Docker container for an Ubuntu version, e.g. `./run.sh 21.10`
 - To test the package build, run `./build.sh` from inside the container. Fix any errors
   by making additional commits in the `cantera` repo on the host system. Changes made
   at this stage do not require incrementing the build number.
