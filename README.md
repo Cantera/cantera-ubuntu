@@ -87,10 +87,12 @@ Cantera packages for the Ubuntu PPA.
 
 ## Build & test packages
 
-- Update `vars.sh` to specify the correct values for `CTVER`, `CTBRANCH`, and
-  `PPA_TARGET`.
+- Update `vars.sh` to specify the correct values for `SHORT_VERSION`, `FULL_VERSION`,
+  `BASE_REF` and `PPA_TARGET`.
   - For stable releases, `PPA_TARGET=cantera-team/Cantera`
-  - For alpha/beta releases, `PPA_TARGET=cantera-team/cantera-unstable`
+  - For alpha/beta releases, `PPA_TARGET=cantera-team/cantera-unstable`.
+  - Also, remember that alpha/beta versions must include a tilde to maintain correct
+    version order, for example `3.0.0~b1`.
 - Launch a Docker container for an Ubuntu version, e.g. `./run.sh 21.10`
 - To test the package build, run `./build.sh` from inside the container. Fix any errors
   by making additional commits in the `cantera` repo on the host system. Changes made

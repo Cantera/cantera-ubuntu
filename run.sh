@@ -16,7 +16,8 @@ die () {
 docker run -it \
        --mount type=bind,source=$HOME/src/cantera,target=/src/cantera,readonly \
        --mount type=bind,source=$HOME/.gnupg,target=/root/gnupg-remote,readonly \
-       -e "CTVER=$CTVER" \
-       -e "CTBRANCH=ubuntu${1}-ct${CTBRANCH}" \
+       -e "FULL_VERSION=$FULL_VERSION" \
+       -e "BASE_REF=$BASE_REF" \
+       -e "PACKAGING_BRANCH=ubuntu${1}-ct${SHORT_VERSION}" \
        -e "PPA_TARGET=${PPA_TARGET}" \
        ${USER}/ctppa:ubuntu${1}
