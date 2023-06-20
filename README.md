@@ -98,13 +98,19 @@ Cantera packages for the Ubuntu PPA.
 - To test the package build, run `./build.sh` from inside the container. Fix any errors
   by making additional commits in the `cantera` repo on the host system. Changes made
   at this stage do not require incrementing the build number.
+- To install the generated packages locally and run some tests, run:
+  - `./test-python-local.sh`
+  - `./run-samples-local.sh`
+- To just install the packages without running the tests directly, run `./install-python-local.sh` and/or `./install-dev-local.sh`
+
+## Upload to Launchpad
 - If the test build succeeds, upload to Launchpad by running `./put.sh`. This should
   prompt you for the passphrase on your GPG key in order to sign the package.
-- If the Launchpad build succeeds, test installing the resulting package by running
-  `./install.sh`
-  - Check that the Python module can be imported
+- If the Launchpad build succeeds, test installing and using the resulting package by running:
+  - `./test-python-ppa.sh`
+  - `./run-samples-ppa.sh`
   - Check that `ck2yaml` and any other binaries are available as expected
-  - Try compiling any of the examples in `/usr/share/cantera/samples`
+- To just install the packages without running the tests directly, run `./install-ppa.sh`
 - If the build works, tag the relevant commit using the Ubuntu version string, e.g.
   `ubuntu-2.5.0-1+focal1`.
 - Repeat this process for each supported Ubuntu series.

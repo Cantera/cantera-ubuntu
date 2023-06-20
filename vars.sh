@@ -8,7 +8,7 @@ export SHORT_VERSION=3.0
 export FULL_VERSION=3.0.0~a5
 
 # For releases uploaded to Launchpad, this should be a tag name on the 'main' branch
-export BASE_REF="952e465ec"
+export BASE_REF="67381fb89"
 
 PPA_TARGET=cantera-team/cantera-unstable
 #PPA_TARGET=cantera-team/cantera
