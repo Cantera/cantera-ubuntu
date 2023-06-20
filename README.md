@@ -75,7 +75,8 @@ Cantera packages for the Ubuntu PPA.
   upstream-tag = v%(version)s
   debian-branch = ubuntu20.04-ct2.6
   ```
-- Run `gbp pq import` to convert the existing patches into a new branch
+- Run `gbp pq import` to convert the existing patches into a new "patch queue" branch
+  - If the patch queue branch already exists, run `gbp pq rebase` instead.
 - Make any changes desired and commit them to this branch. This can include cherry-picking
   commits onto this branch.
 - Run `gbp pq export`. This will create the patch files and return you to the `debian-branch`
