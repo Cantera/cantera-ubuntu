@@ -7,9 +7,14 @@ Cantera packages for the Ubuntu PPA.
 
 - Check out a copy of the `cantera` repository that includes the Debian packaging info
   in `~/src/cantera`
-  Make sure you have created a GPG key and registered it with Launchpad, that you have
-  membership in the `cantera-team`, that the key is not expired, and that it is stored
-  in `~/.gnupg`.
+  Make sure you have created a GPG key and registered it with
+  [Launchpad](https://launchpad.net/), that you have membership in the `cantera-team`,
+  that the key is not expired, and that it is stored in `~/.gnupg`.
+  - Check for key expiration by running `gpg --list-keys`
+  - If you have an expired key, the exiration date can be updated by running
+    `gpg --quick-set-expire KEYID PERIOD`, where `PERIOD` can be something like `2y`.
+  - Then go through the process of updating the key on Launchpad. *As of 2023-07-02,
+    this seems to be buggy. See https://bugs.launchpad.net/launchpad/+bug/3052* 
 - Install Docker in "rootless" mode, or otherwise set it up so your user can run the
   `docker build` command
 
