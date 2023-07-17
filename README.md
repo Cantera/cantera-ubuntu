@@ -18,6 +18,7 @@ Cantera packages for the Ubuntu PPA.
     you will need to send it using the command:
     `gpg --keyserver keyserver.ubuntu.com --send-keys <yourkeyID>`
   - Then go through the process of updating the key on Launchpad.
+- Check out a copy of this repository in `~/src/cantera-ubuntu`
 - Install Docker in "rootless" mode, or otherwise set it up so your user can run the
   `docker build` command
 
@@ -41,6 +42,15 @@ Cantera packages for the Ubuntu PPA.
 
 *Using Cantera 2.6.0 release as an example*
 
+- Create the "pristine" tar file corresponding to the release
+  - From the `cantera` repo, run:
+    `git archive v2.6.0 --output=../cantera-ubuntu/cantera_2.6.0.orig.tar.gz --prefix=cantera-2.6.0/`
+  - Note the trailing slash on the `prefix`
+  - For pre-release versions, format the version as `2.6.0~b2`
+  - Once this file has been uploaded to Launchpad for a particular version, that *exact*
+    file must be used for all subsequent uploads (for example, for builds targeting
+    different Ubuntu releases). If you lose this file, download it again from a
+    different Launchpad build rather than trying to recreate it.
 - Check out the branch for the most recent Ubuntu release supported by the previous
   Cantera release, e.g. `git checkout ubuntu20.04-ct2.6`
 - Create a new branch for the new Cantera version, e.g.
@@ -57,7 +67,7 @@ Cantera packages for the Ubuntu PPA.
     - `focal0` names the series, with a suffix that is incremented for each build for
       that series. This number must be incremented each time the package is uploaded to
       Launchpad, even if the build fails.
-    - For alpha/beta releases, the a `~` needs to be inserted before the alpha/beta suffix
+    - For alpha/beta releases, a `~` needs to be inserted before the alpha/beta suffix
       so they will be seen as coming before the stable release, for example
       `2.5.0~b2-1+focal0`.
   - Add a message, e.g. `New upstream release`

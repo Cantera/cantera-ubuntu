@@ -5,10 +5,10 @@ die () {
     exit 1
 }
 
-mkdir /src/packaging
+mkdir -p /src/packaging
 cd /src/cantera
-git archive $BASE_REF --output=../packaging/cantera_${FULL_VERSION}.orig.tar.gz --prefix=cantera-${FULL_VERSION}/ || die "Tag '$BASE_REF' not found"
 git archive $PACKAGING_BRANCH --output=../packaging/tmp.tar --prefix=cantera/ || die "Branch ${PACKAGING_BRANCH} not found"
 cd /src/packaging
 rm -rf cantera
+cp /src/cantera-ubuntu/cantera_${FULL_VERSION}.orig.tar.gz . || die "Pristine tarball not found"
 tar xf tmp.tar
