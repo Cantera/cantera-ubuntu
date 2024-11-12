@@ -1,7 +1,7 @@
 #!/bin/bash
 
 /src/install-ppa.sh
-pip3 install pytest pint
+pip3 install --break-system-packages pytest pint
 
 /src/prepare.sh
 cd /src/packaging/cantera
