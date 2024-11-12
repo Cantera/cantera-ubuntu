@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd /src/packaging
-dpkg -i cantera-common*.deb cantera-python3_*.deb libcantera*.deb
+dpkg -i cantera-common*.deb python3-cantera_*.deb libcantera*.deb
