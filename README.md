@@ -42,11 +42,12 @@ Cantera packages for the Ubuntu PPA.
 
 *Using Cantera 2.6.0 release as an example*
 
-- Create the "pristine" tar file corresponding to the release
-  - From the `cantera` repo, run:
-    `git archive v2.6.0 --output=../cantera-ubuntu/cantera_2.6.0.orig.tar.gz --prefix=cantera-2.6.0/`
-  - Note the trailing slash on the `prefix`
-  - For pre-release versions, format the version as `2.6.0~b2`
+- Use the "pristine" release tar file that includes the contents of both the
+  `Cantera/cantera` and `Cantera/cantera-example-data` repositories (see instructions in
+  the [release checklist](https://cantera.org/dev/develop/distribution-packages/release-checklist.html)).
+  For stable and beta releases, this should be the tar file uploaded to the GitHub
+  release.
+  - Rename this file according to the pattern `cantera_2.6.0~b2.orig.tar.gz`
   - Once this file has been uploaded to Launchpad for a particular version, that *exact*
     file must be used for all subsequent uploads (for example, for builds targeting
     different Ubuntu releases). If you lose this file, download it again from a
@@ -73,6 +74,9 @@ Cantera packages for the Ubuntu PPA.
   - Add a message, e.g. `New upstream release`
   - If you create the Changelog entry manually, running `date --rfc-2822` will give you
     a correctly formatted date string.
+- Update the library package names in `debian/control` to correspond to the Cantera
+  minor release version, for example `libcantera2.6` and `libcatnera-fortran2.6`.
+- Likewise, update `SO_VERSION` in `debian/rules`.
 - Commit all changes
 - Create additional branches starting from the merge commit for each supported Ubuntu
   release. You may need to remove some `changelog` entries to make sure the versions
@@ -81,6 +85,8 @@ Cantera packages for the Ubuntu PPA.
 ### Steps for adding a new Ubuntu version
 
 - Update the list of Ubuntu versions in `build_images.sh`
+- Create a new branch, starting from the branch for the latest Cantera & Ubuntu release,
+  with the naming pattern `ubuntuYY.MM-ctX.Z`
 - Create a new entry in `debian/changelog` following the above guidelines
 
 ### Deal with any patches needed
@@ -120,6 +126,8 @@ Cantera packages for the Ubuntu PPA.
   - `./test-python-local.sh`
   - `./run-samples-local.sh`
 - To just install the packages without running the tests directly, run `./install-python-local.sh` and/or `./install-dev-local.sh`
+- You can check the dependencies and other package metadata by running the command
+  `dpkg-deb -I ./packaging/<package-name>.deb`
 
 ## Upload to Launchpad
 - If the test build succeeds, upload to Launchpad by running `./put.sh`. This should
