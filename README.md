@@ -17,7 +17,13 @@ Cantera packages for the Ubuntu PPA.
     have not previously registered the key, or you have updated its expiration date,
     you will need to send it using the command:
     `gpg --keyserver keyserver.ubuntu.com --send-keys <yourkeyID>`
-  - Then go through the process of updating the key on Launchpad.
+  - Then go through the process of updating the key on Launchpad:
+    - Wait an indeterminate amount of time (maybe an hour) to make sure Launchpad
+      doesn't use a cached copy of the expired key.
+    - From your LaunchPad user page, go to the "OpenPGP keys" section
+    - Deactivate the existing key, then reactivate it. This will trigger an email
+      with a link where you will need to use your key to sign a registration message.
+  
 - Check out a copy of this repository in `~/src/cantera-ubuntu`
 - Install Docker in "rootless" mode, or otherwise set it up so your user can run the
   `docker build` command
@@ -47,7 +53,8 @@ Cantera packages for the Ubuntu PPA.
   the [release checklist](https://cantera.org/dev/develop/distribution-packages/release-checklist.html)).
   For stable and beta releases, this should be the tar file uploaded to the GitHub
   release.
-  - Rename this file according to the pattern `cantera_2.6.0~b2.orig.tar.gz`
+  - Rename this file according to the pattern `cantera_2.6.0~b2.orig.tar.gz` and save
+    it in the root directory of this repository.
   - Once this file has been uploaded to Launchpad for a particular version, that *exact*
     file must be used for all subsequent uploads (for example, for builds targeting
     different Ubuntu releases). If you lose this file, download it again from a
